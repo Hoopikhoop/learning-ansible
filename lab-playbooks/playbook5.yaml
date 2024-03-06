@@ -1,0 +1,35 @@
+-
+    name: 'Stop the web services on web server nodes'
+    hosts: web_nodes
+    tasks:
+        -
+            name: 'Stop the web services on web server nodes'
+            command: 'service httpd stop'
+-
+    name: 'Stop the db services on web server nodes'
+    hosts: db_nodes
+    tasks:       
+        -
+            name: 'Stop db service'
+            command: 'service mysql stop'
+-
+    name: 'Restart all nodes'
+    hosts: all_nodes
+    tasks:            
+        -
+            name: 'Restart node'
+            command: '/sbin/shutdown -r'
+-
+    name: 'Start mysql on db nodes'
+    hosts: db_nodes
+    tasks:            
+        -
+            name: 'Start mysql service'
+            command: 'service mysql start'
+-
+    name: 'Start httpd on web nodes'
+    hosts: web_nodes
+    tasks:            
+        -
+            name: 'Start httpd service'
+            command: 'service httpd start'
